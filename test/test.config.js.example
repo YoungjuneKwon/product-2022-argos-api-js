@@ -1,0 +1,7 @@
+export default {
+  prefix: 'http://localhost:8080',
+  sampleUser: {
+    email: 'hello@world',
+    password: 'password'
+  }
+}
