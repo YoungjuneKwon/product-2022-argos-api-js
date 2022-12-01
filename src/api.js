@@ -49,6 +49,14 @@ class API {
     const response = await this.post('/upsert', { entity, body: JSON.stringify(body), id })
     return notionDataConverter(response)
   }
+
+  setToken(token) {
+    this.headers['Authorization'] = token
+  }
+
+  getToken() {
+    return this.headers['Authorization']
+  }
 }
 
 export default API
