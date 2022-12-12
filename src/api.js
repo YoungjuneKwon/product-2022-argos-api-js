@@ -10,8 +10,8 @@ const notionDataConverter = r => ({
 })
 
 class API {
-  constructor(host) {
-    this.prefix = host
+  constructor(host, version) {
+    this.prefix = `${host}/api/v${version}`
     this.headers = {
       'Content-Type': 'application/json'
     }
@@ -26,27 +26,27 @@ class API {
   }
 
   async login({email, password}) {
-    const response = await this.post('/login', { email, password })
+    const response = await this.post('/base/login', { email, password })
     if (response.token) this.headers['Authorization'] = response.token
     return response
   }
 
   async find({entity, contains}) {
-    const response = await this.post(`/find`, { entity, contains })
+    const response = await this.post(`/base/find`, { entity, contains })
     return response.map(notionDataConverter)
   }
 
   async get(id) {
-    const response = await this.post('/get', { id })
+    const response = await this.post('/base/get', { id })
     return notionDataConverter(response)
   }
 
   delete(id) {
-    return this.post('/delete', { id })
+    return this.post('/base/delete', { id })
   }
 
   async upsert({entity, body, id}) {
-    const response = await this.post('/upsert', { entity, body: JSON.stringify(body), id })
+    const response = await this.post('/base/upsert', { entity, body: JSON.stringify(body), id })
     return notionDataConverter(response)
   }
 
