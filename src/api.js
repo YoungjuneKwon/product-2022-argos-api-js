@@ -26,7 +26,7 @@ class API {
   }
 
   async login({email, password}) {
-    const response = await this.post('/base/login', { email, password })
+    const response = await this.post('/base/open/login', { email, password })
     if (response.token) this.headers['Authorization'] = response.token
     return response
   }
