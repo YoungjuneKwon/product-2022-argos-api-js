@@ -2,10 +2,11 @@ import API from '../index'
 import config from './test.config'
 
 const ctx = {}
+const version = require('../package.json').version
 
 test("basic CRUD", async () => {
   var res = {}
-  ctx.api = new API(config.prefix)
+  ctx.api = new API(config.prefix, version)
   res = await ctx.api.login(config.sampleUser)
   expect(res.token).toBeTruthy()
   res = await ctx.api.upsert({ entity: 'sample', body: {hello: 'world'}})

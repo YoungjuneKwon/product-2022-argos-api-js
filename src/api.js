@@ -1,14 +1,5 @@
 import axios from 'axios'
 
-const notionDataConverter = r => ({
-  id: r.id,
-  createdAt: r.created_time,
-  updatedAt: r.last_edited_time,
-  entity: r.properties.entity.title[0].plain_text,
-  body: JSON.parse(r.properties.body.rich_text[0].plain_text),
-  owner: r.properties.owner.relation[0].id
-})
-
 class API {
   constructor(host, version) {
     this.prefix = `${host}/api/v${version}`
@@ -33,12 +24,12 @@ class API {
 
   async find({entity, contains}) {
     const response = await this.post(`/base/find`, { entity, contains })
-    return response.map(notionDataConverter)
+    return response
   }
 
   async get(id) {
     const response = await this.post('/base/get', { id })
-    return notionDataConverter(response)
+    return response
   }
 
   delete(id) {
@@ -47,7 +38,7 @@ class API {
 
   async upsert({entity, body, id}) {
     const response = await this.post('/base/upsert', { entity, body: JSON.stringify(body), id })
-    return notionDataConverter(response)
+    return response
   }
 
   setToken(token) {
