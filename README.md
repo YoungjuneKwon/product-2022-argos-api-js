@@ -15,7 +15,7 @@ npm install --save @winm2m/argos-api
 const { API } = require('@winm2m/argos-api')
 
 const API_PREFIX = 'https://wherever.you.host'
-const API_VERSION = '0.3.0' // current version of this package
+const API_VERSION = '0.3.1' // current version of this package
 
 const api = new API(API_PREFIX, API_VERSION)
 
