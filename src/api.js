@@ -22,8 +22,8 @@ class API {
     return response
   }
 
-  async find({entity, contains}) {
-    const response = await this.post(`/base/find`, { entity, contains })
+  async find({entity, contains, size, offset, sort}) {
+    const response = await this.post(`/base/find`, { entity, contains, size, offset, sort })
     return response
   }
 

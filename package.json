@@ -1,6 +1,6 @@
 {
   "name": "@winm2m/argos-api",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "API for the Argos IoT Mobile Web/APP",
   "main": "index.js",
   "scripts": {
